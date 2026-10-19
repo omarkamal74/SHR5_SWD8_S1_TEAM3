@@ -12,6 +12,8 @@ class TaskSuccessState extends TaskState {
 
   TaskSuccessState({required this.tasks,this.searchText = '',});
 
+  get selectedFilter => null;
+
   List<TaskModel> filteredTasks() {
     return tasks.where((t) {
       return t.title.toLowerCase().contains(searchText) ||

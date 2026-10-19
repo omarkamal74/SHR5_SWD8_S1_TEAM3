@@ -4,7 +4,7 @@ import 'package:to_do_list/models/task_model.dart';
 class EditTaskScreen extends StatefulWidget {
   final TaskModel task;
 
-  EditTaskScreen({super.key, required this.task});
+  const EditTaskScreen({super.key, required this.task});
 
   @override
   State<EditTaskScreen> createState() => _EditTaskScreenState();
@@ -43,14 +43,16 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('Task Title', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Task Title',
+                     style: TextStyle(fontWeight: FontWeight.bold)),
                     SizedBox(height: 8),
                     TextField(
                       controller: titleController,
                       decoration: boxDecoration('Enter task title'),
                     ),
                     SizedBox(height: 20),
-                    Text('Notes (optional)', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Notes (optional)',
+                     style: TextStyle(fontWeight: FontWeight.bold)),
                     SizedBox(height: 8),
                     TextField(
                       controller: notesController,
@@ -91,7 +93,8 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                       ],
                     ),
                     SizedBox(height: 20),
-                    Text('Due Date (optional)', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('Due Date (optional)',
+                     style: TextStyle(fontWeight: FontWeight.bold)),
                     SizedBox(height: 8),
                     GestureDetector(
                       onTap: () async {
@@ -167,7 +170,8 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                         },
                         child: Text(
                           'Update Task',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                          style: TextStyle(fontSize: 16,
+                           fontWeight: FontWeight.bold, color: Colors.white),
                         ),
                       ),
                     ),

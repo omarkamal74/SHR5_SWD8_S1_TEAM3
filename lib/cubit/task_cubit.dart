@@ -52,4 +52,6 @@ class TaskCubit extends Cubit<TaskState> {
     await db.update_task(taskmodel);
     emit(TaskSuccessState(tasks: tasks,searchText: searchText,));
   }
+
+  void changeFilter(String text) {}
 }
