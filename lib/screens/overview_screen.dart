@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:to_do_list/cubit/task_cubit.dart';
 import 'package:to_do_list/cubit/task_state.dart';
 import 'package:to_do_list/models/task_model.dart';
+import 'package:to_do_list/screens/calendar_screen.dart';
+import 'package:to_do_list/screens/home.dart';
 
 import '../widgets/stats_section.dart';
 import '../widgets/filter_section.dart';
@@ -17,7 +19,7 @@ class OverviewScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         toolbarHeight: 80,
-        backgroundColor: Color(0xFF536DFE),
+        backgroundColor: Color.fromARGB(255, 33, 89, 243),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -53,7 +55,6 @@ class OverviewScreen extends StatelessWidget {
               ? state.tasks
               : [];
               
-          // استخدام ?? 'All' للحماية في حالة كانت قيمة selectedFilter هي null
           final String currentFilter = (state is TaskSuccessState)
               ? (state.selectedFilter ?? 'All')
               : 'All';
@@ -117,6 +118,27 @@ class OverviewScreen extends StatelessWidget {
           );
         },
       ),
+
+      bottomNavigationBar: BottomNavigationBar(
+      currentIndex: 2,
+         onTap: (value) {
+                if (value == 0) {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+               } else if (value == 1) {
+               Navigator.push(context, MaterialPageRoute(builder: (context) => CalendarScreen()));
+              }
+             },
+                backgroundColor: Colors.white,
+                 items: [
+                   BottomNavigationBarItem(icon: Icon(Icons.checklist_outlined, size: 30), label: "All"),
+                   BottomNavigationBarItem(icon: Icon(Icons.calendar_month, size: 30), label: "Calendar"),
+                   BottomNavigationBarItem(icon: Icon(Icons.dashboard_outlined, size: 30), label: "Overview"),
+                 ],
+                   selectedItemColor: Color.fromARGB(255, 33, 89, 243),
+                   unselectedItemColor: Color(0xff60656b),
+                   selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+             ),
+
     );
   }
 }

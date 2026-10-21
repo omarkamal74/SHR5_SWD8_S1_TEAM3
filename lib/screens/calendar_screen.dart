@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:to_do_list/cubit/calander_cubit.dart';
 import 'package:to_do_list/cubit/calander_state.dart';
+import 'package:to_do_list/screens/home.dart';
+import 'package:to_do_list/screens/overview_screen.dart';
 import 'package:to_do_list/widgets/task_item_widget.dart';
 
 class CalendarScreen extends StatelessWidget {
@@ -204,17 +206,37 @@ class CalendarScreen extends StatelessWidget {
                                   subtitle: task['subtitle'],
                                   priority: task['priority'],
                                   color: task['color'],
-                                );
+                                );    
                               },
                             ),
-                    ],
-                  );
-                },
+                          ],
+                        );
+                      },
+                    ),
+                 ),
+               ],
+             ),
+
+              bottomNavigationBar: BottomNavigationBar(
+                currentIndex: 1,
+                onTap: (value) {
+                if (value == 0) {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+               } else if (value == 2) {
+               Navigator.push(context, MaterialPageRoute(builder: (context) => OverviewScreen()));
+              }
+             },
+                backgroundColor: Colors.white,
+                 items: [
+                   BottomNavigationBarItem(icon: Icon(Icons.checklist_outlined, size: 30), label: "All"),
+                   BottomNavigationBarItem(icon: Icon(Icons.calendar_month, size: 30), label: "Calendar"),
+                   BottomNavigationBarItem(icon: Icon(Icons.dashboard_outlined, size: 30), label: "Overview"),
+                 ],
+                   selectedItemColor: Color.fromARGB(255, 33, 89, 243),
+                   unselectedItemColor: Color(0xff60656b),
+                   selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+           ),
+         );
+       }
+    }
