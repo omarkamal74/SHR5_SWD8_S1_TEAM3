@@ -24,17 +24,18 @@ class OverviewScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.assignment, color: Colors.white, size: 28),
-            SizedBox(width: 10),
+            //SizedBox(width: 10),
             Text(
               'Tasks Overview',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 24,
+                fontSize: 22,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ],
         ),
+        centerTitle: true,
       ),
       body: BlocBuilder<TaskCubit, TaskState>(
         builder: (context, state) {
@@ -54,9 +55,9 @@ class OverviewScreen extends StatelessWidget {
           final List<TaskModel> allTasks = state is TaskSuccessState
               ? state.tasks
               : [];
-              
-          final String currentFilter = (state is TaskSuccessState)
-              ? (state.selectedFilter ?? 'All')
+
+          final String currentFilter = state is TaskSuccessState
+              ? state.selectedFilter
               : 'All';
 
           final List<TaskModel> filteredTasks = state is TaskSuccessState
@@ -120,25 +121,39 @@ class OverviewScreen extends StatelessWidget {
       ),
 
       bottomNavigationBar: BottomNavigationBar(
-      currentIndex: 2,
-         onTap: (value) {
-                if (value == 0) {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-               } else if (value == 1) {
-               Navigator.push(context, MaterialPageRoute(builder: (context) => CalendarScreen()));
-              }
-             },
-                backgroundColor: Colors.white,
-                 items: [
-                   BottomNavigationBarItem(icon: Icon(Icons.checklist_outlined, size: 30), label: "All"),
-                   BottomNavigationBarItem(icon: Icon(Icons.calendar_month, size: 30), label: "Calendar"),
-                   BottomNavigationBarItem(icon: Icon(Icons.dashboard_outlined, size: 30), label: "Overview"),
-                 ],
-                   selectedItemColor: Color.fromARGB(255, 33, 89, 243),
-                   unselectedItemColor: Color(0xff60656b),
-                   selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
-             ),
-
+        currentIndex: 2,
+        onTap: (value) {
+          if (value == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
+          } else if (value == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CalendarScreen()),
+            );
+          }
+        },
+        backgroundColor: Colors.white,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.checklist_outlined, size: 30),
+            label: "All",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_month, size: 30),
+            label: "Calendar",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.dashboard_outlined, size: 30),
+            label: "Overview",
+          ),
+        ],
+        selectedItemColor: Color.fromARGB(255, 33, 89, 243),
+        unselectedItemColor: Color(0xff60656b),
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+      ),
     );
   }
 }
