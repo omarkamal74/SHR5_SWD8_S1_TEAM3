@@ -28,7 +28,7 @@ class CalendarScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor:  Color(0xFFF8F9FA),
         appBar: AppBar(
-          toolbarHeight: 80,
+          toolbarHeight: 60,
           backgroundColor: primaryColor,
           elevation: 0,
           centerTitle: true,

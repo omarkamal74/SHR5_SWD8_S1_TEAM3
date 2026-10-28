@@ -21,7 +21,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
     return Scaffold(
       backgroundColor: Color(0xFFF5F6FA),
       appBar: AppBar(
-        toolbarHeight: 80,
+        toolbarHeight: 60,
         backgroundColor: Color.fromARGB(255, 33, 89, 243),
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(

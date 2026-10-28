@@ -15,7 +15,7 @@ class AddTaskScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xFFF5F6FA),
       appBar: AppBar(
-        toolbarHeight: 80,
+        toolbarHeight: 60,
         backgroundColor:  Color.fromARGB(255, 33, 89, 243),
         title: Text(
           'Add Task',
